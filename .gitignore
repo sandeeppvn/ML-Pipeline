@@ -102,10 +102,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.artifacts
 .env
 .venv
-.vscode
 env/
 venv/
 ENV/
@@ -129,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Catboost stuff
+catboost_info/
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_Store
+
+

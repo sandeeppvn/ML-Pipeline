@@ -78,7 +78,7 @@ class DataTransformation:
             raise CustomException(e,sys)
         
 
-    def initiate_data_transformation(self, train_data_path, test_data_path):
+    def transform(self, train_data_path: str, test_data_path: str):
         '''
         Description: This method is used to initiate the data transformation process. It performs the following steps:
             1. Get the preprocessor object
@@ -105,33 +105,33 @@ class DataTransformation:
             logging.info('Created train and test data without target feature')
 
             # Get the preprocessor object
-            preprocessor = self.get_data_transformer_object()
+            preprocessor_obj = self.get_data_transformer_object()
 
             # Fit the preprocessor object on train data
-            preprocessor.fit(X_train_df)
+            preprocessor_obj.fit(X_train_df)
             logging.info('Fitted preprocessor object on train data')
 
             # Transform the train and test data using the preprocessor object
-            transformed_train_df = preprocessor.transform(X_train_df)
-            transformed_test_df = preprocessor.transform(X_test_df)
+            transformed_train_arr = preprocessor_obj.transform(X_train_df)
+            transformed_test_arr = preprocessor_obj.transform(X_test_df)
             logging.info('Transformed train and test data using the preprocessor object')
 
             # Save the preprocessor object to artifacts, use utils save_object method
             save_object(
                 self.data_transformation_config.preprocessor_obj_path,
-                preprocessor
+                preprocessor_obj
             )
 
             # Combine the target feature with the transformed train and test data using np.c_
-            transformed_train_df = np.c_[transformed_train_df, y_train_df]
-            transformed_test_df = np.c_[transformed_test_df, y_test_df]
+            transformed_train_arr = np.c_[transformed_train_arr, np.array(y_train_df)]
+            transformed_test_arr = np.c_[transformed_test_arr, np.array(y_test_df)]
             logging.info('Combined the target feature with the transformed train and test data using np.c_')
 
             # Return the transformed train data, test data and preprocessor object
             return (
-                transformed_train_df,
-                transformed_test_df,
-                preprocessor
+                transformed_train_arr,
+                transformed_test_arr,
+                preprocessor_obj
             )
             
 

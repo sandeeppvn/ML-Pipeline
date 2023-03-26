@@ -14,7 +14,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-from src.components.data_transformation import DataTransformationConfig, DataTransformation
+from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
+
 
 
 @dataclass
@@ -27,7 +29,7 @@ class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
 
-    def initiate_data_ingestion(self):
+    def ingest(self):
         '''
         Description: This method is used to initiate the data ingestion process. It performs the following steps:
             1. Read the data from source
@@ -77,7 +79,20 @@ class DataIngestion:
 
 if __name__ == '__main__':
     data_ingestion = DataIngestion()
-    train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
+    train_data_path, test_data_path = data_ingestion.ingest()
 
     data_transformation = DataTransformation()
-    train_data, test_data, preprocessor = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+    train_data, test_data, preprocessor_obj = data_transformation.transform(train_data_path, test_data_path)
+
+    model_trainer = ModelTrainer()
+    predcited_r2_score, report = model_trainer.train(train_data, test_data, preprocessor_obj)
+
+
+    print('Predicted R2 score: {}'.format(predcited_r2_score))
+    # Print the model evaluation report in a readable format
+    for model_name, model_report in report.items():
+        print('\nModel: {}'.format(model_name))
+        for metric_name, metric_value in model_report.items():
+            print('{}: {}'.format(metric_name, metric_value))
+
+
