@@ -43,10 +43,11 @@ class DataIngestion:
             train, test = train_test_split(df, test_size=0.2, random_state=42)
 
             # Saving the train data to artifacts
-            train.to_csv(self.ingestion_config.train_data_path, index=False, header=True)
+            pd.DataFrame(train).to_csv(self.ingestion_config.train_data_path, index=False, header=True)
+            
 
             # Saving the test data to artifacts
-            test.to_csv(self.ingestion_config.test_data_path, index=False, header=True)
+            pd.DataFrame(test).to_csv(self.ingestion_config.test_data_path, index=False, header=True)
 
             logging.info('Data ingestion completed successfully')
 
