@@ -4,7 +4,7 @@ Created Date: 25 March 2021
 '''
 
 import sys
-import logger
+from src.logger import logging
 
 def error_message_details(error, error_detail):
     _,_,exc_tb = error_detail.exc_info()
