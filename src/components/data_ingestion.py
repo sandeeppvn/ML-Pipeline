@@ -14,6 +14,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformationConfig, DataTransformation
+
 
 @dataclass
 class DataIngestionConfig:
@@ -26,6 +28,17 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig()
 
     def initiate_data_ingestion(self):
+        '''
+        Description: This method is used to initiate the data ingestion process. It performs the following steps:
+            1. Read the data from source
+            2. Split the data into train and test
+            3. Save the raw data to artifacts
+            4. Save the train and test data to artifacts
+            5. Return the train and test data paths
+
+        Input: None
+        Output: train_data_path, test_data_path
+        '''
         logging.info('Initiating data ingestion')
         try:
             df = pd.read_csv('data/stud.csv')
@@ -58,10 +71,13 @@ class DataIngestion:
 
 
         except Exception as e:
-            logging.error('Failed to ingest data')
+            logging.info('Failed to ingest data')
             raise CustomException(e, sys)
 
 
 if __name__ == '__main__':
     data_ingestion = DataIngestion()
-    data_ingestion.initiate_data_ingestion()
+    train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    train_data, test_data, preprocessor = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
