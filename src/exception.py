@@ -4,7 +4,6 @@ Created Date: 25 March 2021
 '''
 
 import sys
-import logging
 import logger
 
 def error_message_details(error, error_detail):
