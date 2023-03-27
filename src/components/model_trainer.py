@@ -17,7 +17,6 @@ from dataclasses import dataclass
 # Model Libraries
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor, GradientBoostingRegressor
 from catboost import CatBoostRegressor
@@ -33,6 +32,7 @@ from sklearn.metrics import r2_score
 class ModelTrainerConfig:
     trained_model_path = os.path.join('artifacts', 'model.pkl')
     model_report_path = os.path.join('artifacts', 'model_report.csv')
+    hyperparameter_tuning_path = os.path.join('config', 'hyperparameter_tuning.json')
 
 class ModelTrainer:
     def __init__(self):
@@ -61,18 +61,18 @@ class ModelTrainer:
 
             # Train the model
             models = {
-                'LinearRegression': LinearRegression(),
+                'Linear Regression': LinearRegression(),
                 'SVR': SVR(),
-                'KNeighborsRegressor': KNeighborsRegressor(),
-                'DecisionTreeRegressor': DecisionTreeRegressor(),
-                'AdaBoostRegressor': AdaBoostRegressor(),
-                'RandomForestRegressor': RandomForestRegressor(),
-                'GradientBoostingRegressor': GradientBoostingRegressor(),
-                'CatBoostRegressor': CatBoostRegressor(),
+                'Decision Tree': DecisionTreeRegressor(),
+                'AdaBoost Regressor': AdaBoostRegressor(),
+                'Random Forest': RandomForestRegressor(),
+                'Gradient Boosting': GradientBoostingRegressor(),
+                'CatBoosting Regressor': CatBoostRegressor(verbose=0),
                 'XGBRegressor': XGBRegressor()
             }
 
-            report: dict = evaluate_models(X_train, y_train, X_test, y_test, models)
+
+            report: dict = evaluate_models(X_train, y_train, X_test, y_test, models, self.model_trainer_config.hyperparameter_tuning_path)
             # Save the model report
             save_object(self.model_trainer_config.model_report_path, report)
 

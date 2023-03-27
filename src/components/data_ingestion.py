@@ -88,11 +88,13 @@ if __name__ == '__main__':
     predcited_r2_score, report = model_trainer.train(train_data, test_data, preprocessor_obj)
 
 
-    print('Predicted R2 score: {}'.format(predcited_r2_score))
+    
     # Print the model evaluation report in a readable format
     for model_name, model_report in report.items():
         print('\nModel: {}'.format(model_name))
         for metric_name, metric_value in model_report.items():
             print('{}: {}'.format(metric_name, metric_value))
+
+    print('\nPredicted R2 score: {}'.format(predcited_r2_score))
 
 
