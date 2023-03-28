@@ -31,7 +31,7 @@ from sklearn.metrics import r2_score
 @dataclass
 class ModelTrainerConfig:
     trained_model_path = os.path.join('artifacts', 'model.pkl')
-    model_report_path = os.path.join('artifacts', 'model_report.csv')
+    model_report_path = os.path.join('artifacts', 'model_report.pkl')
     hyperparameter_tuning_path = os.path.join('config', 'hyperparameter_tuning.json')
 
 class ModelTrainer:
