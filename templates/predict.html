@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Student Exam Math Score Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 style="background-color: #4285F4; color: #fff; padding: 10px; border-radius: 5px; text-align: center; font-size: 24px;">
+                {% if prediction %}
+                    The predicted Maths Score is <b><u><i><span>{{ prediction }}</span></i></u></b>
+                {% endif %}
+            </h2>
+            
+              
+            <div class="col-md-6 col-md-offset-3">
+                <form action="{{ url_for('predict')}}" method="post">
+                    <h2 class="text-center">Student Exam Math Score Prediction</h2>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select class="form-control" name="gender" required>
+                            <option value="" disabled selected>Select your Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Race or Ethnicity</label>
+                        <select class="form-control" name="ethnicity" required>
+                            <option value="" disabled selected>Select Ethnicity</option>
+                            <option value="group A">Group A</option>
+                            <option value="group B">Group B</option>
+                            <option value="group C">Group C</option>
+                            <option value="group D">Group D</option>
+                            <option value="group E">Group E</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Parental Level of Education</label>
+                        <select class="form-control" name="parental_level_of_education" required>
+                            <option value="" disabled selected>Select Parent Education</option>
+                            <option value="associate's degree">Associate's Degree</option>
+                            <option value="bachelor's degree">Bachelor's Degree</option>
+                            <option value="high school">High School</option>
+                            <option value="master's degree">Master's Degree</option>
+                            <option value="some college">Some College</option>
+                            <option value="some high school">Some High School</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Lunch Type</label>
+                        <select class="form-control" name="lunch" required>
+                            <option value="" disabled selected>Select Lunch Type</option>
+                            <option value="free/reduced">Free/Reduced</option>
+                            <option value="standard">Standard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Test Preparation Course</label>
+                        <select class="form-control" name="test_preparation_course" required>
+                            <option value="" disabled selected>Select Test Course</option>
+                            <option value="none">None</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Writing Score out of 100</label>
+                        <input class="form-control" type="number" name="writing_score" min='0' max='100' placeholder="Enter your Writing Score" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Reading Score out of 100</label>
+                        <input class="form-control" type="number" name="reading_score" min='0' max='100' placeholder="Enter your Reading Score" required />
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Predict your Maths Score</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

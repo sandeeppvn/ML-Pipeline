@@ -1,13 +1,11 @@
 '''
 Author: Sandeep Pvn
-Created Date: 25 March 2021
+Created Date: 27 March 2021
 '''
 
 import os
 import sys
-import pickle
 import numpy as np
-import pandas as pd
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object, evaluate_models

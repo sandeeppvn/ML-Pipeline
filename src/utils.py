@@ -1,6 +1,6 @@
 '''
 Author: Sandeep Pvn
-Created Date: 25 March 2021
+Created Date: 26 March 2021
 '''
 
 import os
@@ -38,14 +38,25 @@ def save_object(filepath: str, obj: object):
         logging.info('Error occured while saving the object to {}'.format(filepath))
         raise CustomException(e,sys)
     
-
+def load_object(filepath: str):
+    '''
+    Description: This method is used to load the object from a file
+    '''
+    logging.info('Loading the object from {}'.format(filepath))
+    try:
+        with open(filepath, 'rb') as f:
+            obj = pickle.load(f)
+        return obj
+    except Exception as e:
+        logging.info('Error occured while loading the object from {}'.format(filepath))
+        raise CustomException(e,sys)
     
 def evaluate_models(X_train: np.ndarray, y_train: np.ndarray, X_test: np.ndarray, y_test: np.ndarray, models: dict, hyperparameter_tuning_path: str) -> dict:
     '''
     Description: This method is used to evaluate the models
 
     Input: X_train, y_train, X_test, y_test, models
-    Output: None
+    Output: report of type dict[model_name: {train_r2: float, test_r2: float}]
     '''
     logging.info('Evaluating the models')
     try:

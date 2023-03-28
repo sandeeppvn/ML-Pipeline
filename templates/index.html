@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Performance Regression Portfolio Project</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#">Student Performance Regression Portfolio Project</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#introduction">Introduction</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#project-overview">Project Overview</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#implementation-detail">Implementation Detail</a>
+						</li>
+                        <!-- Add a button to take to the prediction page : relative path add /predict and make a get call with the button-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/predict">Predict</a>
+                        </li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<div class="container">
+				<h2>Introduction</h2>
+				<p>This portfolio project aims to analyze the relationship between students' performance on tests and various demographic and socio-economic factors. We will explore the effects of gender, ethnicity, parental education, lunch quality, and test preparation courses on student scores.</p>
+			</div>
+		</section>
+		<section id="project-overview">
+			<div class="container">
+				<h2>Project Overview</h2>
+				<p>We will use a dataset from Kaggle, preprocess and clean the data, and conduct exploratory data analysis (EDA) to gain insights. We will then develop a regression model using algorithms such as Decision Trees, Random Forest, Support Vector Regression (SVR), XGBoost, and CatBoost. The model will be hyperparameter-tuned and the best model selected. The final model will be deployed using Flask, and the code will be written as a modular, production-grade, deployable code with CI/CD MLOps integration from VSCode, GitHub Actions, Jenkins, and AWS.</p>
+			</div>
+		</section>
+		<section id="implementation-detail">
+			<div class="container">
+				<h2>Implementation Detail</h2>
+				<ul>
+					<li>Data Collection: Collect dataset from Kaggle</li>
+					<li>Data Preprocessing and Cleaning: Clean and prepare dataset for analysis</li>
+					<li>Exploratory Data Analysis (EDA): Gain insights into relationships between factors and student performance</li>
+					<li>Model Development: Develop regression model using algorithms such as Decision Trees, Random Forest, SVR, XGBoost, and CatBoost</li>
+                    <li>Hyperparameter Tuning: Tune the hyperparameters of our models to improve their performance</li>
+                    <li>Best Model Selection: Compare the performance of each model and select the best one to use in our project</li>
+                    <li>Model Deployment using Flask: Deploy our model using Flask, a Python web framework. This will allow us to create a web application where users can input student data, and our model will predict their scores</li>
+                    <li>Production Grade Code: Write our code as a modular, production-grade, deployable code with CI/CD MLOps integration from VSCode, GitHub Actions, Jenkins, and AWS</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Student Performance Regression Portfolio Project</p>
+        </div>
+    </footer>
